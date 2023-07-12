@@ -58,6 +58,9 @@
 						<div class="menu-lv__dropdownmenu menu-lv__dropdownmenu-3 image-lower-{{ image_style_lower }}">
 							<ul class="menu-lv__grid grid-menu list-unstyled motion-reduce clearfix">
 								{%- for childlink in link.links -%}
+									{%- comment %}<locksmith:cbb9>{% endcomment -%}
+									  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: childlink, subject_parent: link, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+									{%- comment %}</locksmith:cbb9>{% endcomment -%}
 									<li class="menu-lv-item menu-lv-3 text-center">
 										<a href="{{ childlink.url }}" class="menu-lv-3__action grid-menu__item link focus-inset">
 											{%- liquid
@@ -133,6 +136,9 @@
 									</li>
 								{% endif %}
 	                            {%- for childlink in link.links -%}
+	                            	{%- comment %}<locksmith:b594>{% endcomment -%}
+	                            	  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: childlink, subject_parent: link, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+	                            	{%- comment %}</locksmith:b594>{% endcomment -%}
 	                            	<li class="menu-lv-item menu-lv-3 text-left{% if childlink.links != blank %} dropdown{% endif %}">
 	                            		{%- if childlink.links == blank -%}
 	                            			<a href="{{ childlink.url }}" class="menu-lv-3__action list-menu__item list-menu__item--end link focus-inset{% if show_icon %} menu-lv__flex{% endif %}">
@@ -199,6 +205,9 @@
 						                                </a>
 						                            </li>
 						                            {%- for grandchildlink in childlink.links -%}
+						                            	{%- comment %}<locksmith:3811>{% endcomment -%}
+						                            	  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: grandchildlink, subject_parent: childlink, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+						                            	{%- comment %}</locksmith:3811>{% endcomment -%}
 						                            	<li class="menu-lv-item menu-lv-3 text-left">
 						                            		<a href="{{ grandchildlink.url }}" class="menu-lv-3__action list-menu__item list-menu__item--end link focus-inset{% if show_icon %} menu-lv__flex{% endif %}">
 						                            			{%- if show_icon -%}

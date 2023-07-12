@@ -50,6 +50,9 @@
 						</li>
 					{% endif %}
 			        {%- for childlink in link.links -%}
+			        	{%- comment %}<locksmith:f443>{% endcomment -%}
+			        	  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: childlink, subject_parent: link, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+			        	{%- comment %}</locksmith:f443>{% endcomment -%}
 			        	<li class="menu-lv-item menu-lv-2 text-left{% if childlink.links != blank %} dropdown{% endif %}">
 			        		{%- if childlink.links == blank -%}
 			        			<a href="{{ childlink.url }}" class="menu-lv-2__action list-menu__item list-menu__item--end link focus-inset{% if show_icon %} menu-lv__flex{% endif %}">
@@ -124,6 +127,9 @@
 											</li>
 										{% endif %}	
 			                            {%- for grandchildlink in childlink.links -%}
+			                            	{%- comment %}<locksmith:f67b>{% endcomment -%}
+			                            	  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: grandchildlink, subject_parent: childlink, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+			                            	{%- comment %}</locksmith:f67b>{% endcomment -%}
 			                            	<li class="menu-lv-item menu-lv-3 text-left">
 			                            		<a href="{{ grandchildlink.url }}" class="menu-lv-3__action list-menu__item list-menu__item--end link focus-inset{% if show_icon %} menu-lv__flex{% endif %}">
 			                            			{%- if show_icon -%}

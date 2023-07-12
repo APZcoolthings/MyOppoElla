@@ -15,7 +15,13 @@
             <div class="menu-drawer__navigation-container">
                 <nav class="menu-drawer__navigation">
                     <ul class="menu-drawer__menu list-menu" role="list">
+                        {%- comment %}<locksmith:c955>{% endcomment -%}
+                          {%- assign locksmith_0c5c_forloop__size = 0 %}{%- for link in section.settings.menu.links -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: section.settings.menu, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_0c5c_forloop__size = locksmith_0c5c_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_0c5c_forloop__index = nil -%}
+                        {%- comment %}</locksmith:c955>{% endcomment -%}
                         {%- for link in section.settings.menu.links -%}
+                            {%- comment %}<locksmith:3281>{% endcomment -%}
+                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: section.settings.menu, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_0c5c_forloop__index == nil %}{% assign locksmith_0c5c_forloop__index = 1 %}{% assign locksmith_0c5c_forloop__index0 = 0 %}{% else %}{% assign locksmith_0c5c_forloop__index = locksmith_0c5c_forloop__index | plus: 1 %}{% assign locksmith_0c5c_forloop__index0 = locksmith_0c5c_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_0c5c_forloop__index == 1 %}{% assign locksmith_0c5c_forloop__first = true %}{% else %}{% assign locksmith_0c5c_forloop__first = false %}{% endif %}{% if locksmith_0c5c_forloop__index == locksmith_0c5c_forloop__size %}{% assign locksmith_0c5c_forloop__last = true %}{% else %}{% assign locksmith_0c5c_forloop__last = false %}{% endif %}{% assign locksmith_0c5c_forloop__rindex = locksmith_0c5c_forloop__size | minus: locksmith_0c5c_forloop__index | minus: 1 %}{% assign locksmith_0c5c_forloop__rindex0 = locksmith_0c5c_forloop__size | minus: locksmith_0c5c_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+                            {%- comment %}</locksmith:3281>{% endcomment -%}
                             {%- liquid
                                 assign sale_item_lv1 = section.settings.sale_item_1 | split: "," | strip | downcase | handle
                                 assign sale_item_lv2 = section.settings.sale_item_2 | split: "," | strip | downcase | handle
@@ -124,6 +130,9 @@
                                                         </a>
                                                     </li>
                                                     {%- for childlink in link.links -%}
+                                                        {%- comment %}<locksmith:b8e8>{% endcomment -%}
+                                                          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: childlink, subject_parent: link, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                                                        {%- comment %}</locksmith:b8e8>{% endcomment -%}
                                                         {% assign childtitle = childlink.title | escape | downcase | handle %}
                                                         <li class="menu-mobile-lv-2 text-left{% if sale_item_lv2 contains childtitle %} menu-sale{% endif %}">
                                                             {%- if childlink.links == blank -%}
@@ -156,6 +165,9 @@
                                                                                 </a>
                                                                             </li>
                                                                             {%- for grandchildlink in childlink.links -%}
+                                                                                {%- comment %}<locksmith:632d>{% endcomment -%}
+                                                                                  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: grandchildlink, subject_parent: childlink, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                                                                                {%- comment %}</locksmith:632d>{% endcomment -%}
                                                                                 {% assign grandchildtitle = grandchildlink.title | escape | downcase | handle %}
                                                                                 <li class="menu-mobile-lv-3 text-left{% if sale_item_lv3 contains grandchildtitle %} menu-sale{% endif %}">
                                                                                     <a href="{{ grandchildlink.url }}" class="menu--mobile-lv-3__action menu-drawer__menu-item link link--text list-menu__item focus-inset"{% if grandchildlink.current %} aria-current="page"{% endif %}>
@@ -300,6 +312,9 @@
                                                                         {% assign list_vendor = '' %}
                                                                         {% assign array = "1-9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z" | split: "|" %}
                                                                         {%- for brand in shop.vendors -%}
+                                                                            {%- comment %}<locksmith:181b>{% endcomment -%}
+                                                                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: brand, subject_parent: shop, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                                                                            {%- comment %}</locksmith:181b>{% endcomment -%}
                                                                             {% assign first = brand | strip_html | capitalize | truncate: 1, '' %}
                                                                             {%- unless list_vendor contains first -%}
                                                                                 {% assign list_vendor = list_vendor | append: first %}

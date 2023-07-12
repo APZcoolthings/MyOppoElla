@@ -17,6 +17,9 @@
       <div class="footer-block__list">
         <ul class="list-unstyled">
           {%- for link in block.settings.menu.links -%}
+            {%- comment %}<locksmith:f190>{% endcomment -%}
+              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: block.settings.menu, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+            {%- comment %}</locksmith:f190>{% endcomment -%}
             <li>
               <a
                 {% if link.url == blank %}

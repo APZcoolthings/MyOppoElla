@@ -21,6 +21,9 @@
         endif
     -%}
     {%- for link in menu -%}
+        {%- comment %}<locksmith:08f4>{% endcomment -%}
+          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:08f4>{% endcomment -%}
         {%- liquid
             assign sale_item_lv1 = section.settings.sale_item_1 | split: "," | strip | downcase | handle
             assign sale_item_lv2 = section.settings.sale_item_2 | split: "," | strip | downcase | handle

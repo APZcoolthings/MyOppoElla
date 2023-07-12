@@ -25,6 +25,9 @@
             <div class="sidebarBlock-content">
                 <div class="recentPosts-list {{number}}">
                     {%- for article in blog.articles limit: number -%}
+                        {%- comment %}<locksmith:ecbf>{% endcomment -%}
+                          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: article, subject_parent: blog, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                        {%- comment %}</locksmith:ecbf>{% endcomment -%}
                         <div class="recentPosts-list-item">
                             <h6 class="title">
                                 <a href="{{ article.url }}" class="link link-underline" aria-label="link">

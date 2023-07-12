@@ -53,6 +53,9 @@
                         {% endif %}
                     >
                         {%- for product in collections[collection].products limit: limit -%}
+                            {%- comment %}<locksmith:2a0a>{% endcomment -%}
+                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections[collection], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                            {%- comment %}</locksmith:2a0a>{% endcomment -%}
                             <div class="product {% if layout == 'slider' %}slider__slide{% else %}grid__item{% endif %}">
                                 {% render 'product-grid-layout',
                                     product_card_product: product,

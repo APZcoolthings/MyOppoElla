@@ -1,5 +1,8 @@
 <ul class="{{ listClass }}" role="list">
     {%- for link in block.settings.vertical_menu.links -%}
+        {%- comment %}<locksmith:aebd>{% endcomment -%}
+          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: block.settings.vertical_menu, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:aebd>{% endcomment -%}
         {%- liquid
             assign sale_item_lv1 = block.settings.sale_item_1 | split: "," | strip | downcase | handle
             assign sale_item_lv2 = block.settings.sale_item_2 | split: "," | strip | downcase | handle

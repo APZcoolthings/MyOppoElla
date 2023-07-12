@@ -148,6 +148,9 @@
                 <div class="previewCartCarousel products-carousel" data-item-dots="{{ show_dots }}" data-item-arrows="{{ show_arrows }}"
                 >
                     {%- for product in collection.products limit: limit -%}
+                        {%- comment %}<locksmith:4c11>{% endcomment -%}
+                          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                        {%- comment %}</locksmith:4c11>{% endcomment -%}
                         <div class="product">
                             {% render 'product-card-sidebar',
                                 product_card_product: product

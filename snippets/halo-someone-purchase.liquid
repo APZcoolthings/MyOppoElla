@@ -40,6 +40,9 @@
             </div>
             <div class="product-data hide">
                 {%- for product in products -%}
+                    {%- comment %}<locksmith:1cc0>{% endcomment -%}
+                      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                    {%- comment %}</locksmith:1cc0>{% endcomment -%}
                     <div class="data-product"
                         data-image="{{ product.featured_image.src | img_url: '100x' }}"
                         data-url="{{ product.url }}"

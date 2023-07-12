@@ -64,6 +64,9 @@
 		        <div class="before-you-leave-content-product">
 		            <div class="products-carousel">
 		                {% for product in collection.products limit: limit %}
+		                    {%- comment %}<locksmith:b61a>{% endcomment -%}
+		                      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+		                    {%- comment %}</locksmith:b61a>{% endcomment -%}
 		                    <div class="product">
 		                        {% render 'product-card-sidebar',
 									product_card_product: product
