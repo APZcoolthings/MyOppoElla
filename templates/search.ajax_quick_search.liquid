@@ -1,10 +1,16 @@
 {%- layout none -%}
 
 {%- capture results -%}
+    {%- comment %}<locksmith:b75e>{% endcomment -%}
+      {%- assign locksmith_adfe_forloop__size = 0 %}{%- for result in search.results -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: result, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_adfe_forloop__size = locksmith_adfe_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_adfe_forloop__index = nil -%}
+    {%- comment %}</locksmith:b75e>{% endcomment -%}
     {%- for result in search.results -%}
+        {%- comment %}<locksmith:4929>{% endcomment -%}
+          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: result, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_adfe_forloop__index == nil %}{% assign locksmith_adfe_forloop__index = 1 %}{% assign locksmith_adfe_forloop__index0 = 0 %}{% else %}{% assign locksmith_adfe_forloop__index = locksmith_adfe_forloop__index | plus: 1 %}{% assign locksmith_adfe_forloop__index0 = locksmith_adfe_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_adfe_forloop__index == 1 %}{% assign locksmith_adfe_forloop__first = true %}{% else %}{% assign locksmith_adfe_forloop__first = false %}{% endif %}{% if locksmith_adfe_forloop__index == locksmith_adfe_forloop__size %}{% assign locksmith_adfe_forloop__last = true %}{% else %}{% assign locksmith_adfe_forloop__last = false %}{% endif %}{% assign locksmith_adfe_forloop__rindex = locksmith_adfe_forloop__size | minus: locksmith_adfe_forloop__index | minus: 1 %}{% assign locksmith_adfe_forloop__rindex0 = locksmith_adfe_forloop__size | minus: locksmith_adfe_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:4929>{% endcomment -%}
         {
             "handle": "{{ result.handle }}"
-        }{% unless forloop.last %},{% endunless %}
+        }{% unless locksmith_adfe_forloop__last %},{% endunless %}
     {%- endfor -%}
 {%- endcapture -%}
 

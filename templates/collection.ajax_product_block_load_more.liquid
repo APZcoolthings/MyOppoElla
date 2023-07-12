@@ -19,13 +19,19 @@
     assign start = end | minus: limit | plus: 1
 -%}
 
+{%- comment %}<locksmith:a025>{% endcomment -%}
+  {%- assign locksmith_643c_forloop__size = 0 %}{%- for product in collections[collection.handle].products limit: end -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections[collection.handle], variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_643c_forloop__size = locksmith_643c_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_643c_forloop__index = nil -%}
+{%- comment %}</locksmith:a025>{% endcomment -%}
 {%- for product in collections[collection.handle].products limit: end -%}
-    {%- if forloop.index >= start -%}
+    {%- comment %}<locksmith:329a>{% endcomment -%}
+      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections[collection.handle], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_643c_forloop__index == nil %}{% assign locksmith_643c_forloop__index = 1 %}{% assign locksmith_643c_forloop__index0 = 0 %}{% else %}{% assign locksmith_643c_forloop__index = locksmith_643c_forloop__index | plus: 1 %}{% assign locksmith_643c_forloop__index0 = locksmith_643c_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_643c_forloop__index == 1 %}{% assign locksmith_643c_forloop__first = true %}{% else %}{% assign locksmith_643c_forloop__first = false %}{% endif %}{% if locksmith_643c_forloop__index == locksmith_643c_forloop__size %}{% assign locksmith_643c_forloop__last = true %}{% else %}{% assign locksmith_643c_forloop__last = false %}{% endif %}{% assign locksmith_643c_forloop__rindex = locksmith_643c_forloop__size | minus: locksmith_643c_forloop__index | minus: 1 %}{% assign locksmith_643c_forloop__rindex0 = locksmith_643c_forloop__size | minus: locksmith_643c_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+    {%- comment %}</locksmith:329a>{% endcomment -%}
+    {%- if locksmith_643c_forloop__index >= start -%}
         <div class="product{% if swipe == 'true' %} slider__slide grid__item{% endif %}">
             {% render 'product-grid-layout',
             product_card_product: product,
             portrait_aspect_ratio: '125',
-            serial: forloop.index,
+            serial: locksmith_643c_forloop__index,
             sectionId: sectionId,
             media_size: image_ratio,
             hasCountdown: hasCountdown,

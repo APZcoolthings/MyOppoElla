@@ -7,6 +7,9 @@
             {% if linklists[category_filter].links.size > 0 %}
                 <ul>
                     {% for link in linklists[category_filter].links %}
+                    {%- comment %}<locksmith:48c9>{% endcomment -%}
+                      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists[category_filter], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                    {%- comment %}</locksmith:48c9>{% endcomment -%}
                     <li {% if link.active %}class="active"{% endif %}>
                         <a href="{{ link.url}}" title=" {{ link.title }}" >
                             {{ link.title }}
@@ -15,6 +18,9 @@
                             {% assign link_child = link.handle %}
                             <ul>
                                 {% for link_child_item in linklists[link_child].links %}
+                                {%- comment %}<locksmith:4c17>{% endcomment -%}
+                                  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link_child_item, subject_parent: linklists[link_child], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                                {%- comment %}</locksmith:4c17>{% endcomment -%}
                                 <li {% if link_child_item.current %}class="active"{% endif %}>
                                     <a href="{{ link_child_item.url }}" data-value="{{ link_child_item.title | handle }}">
                                         {{ link_child_item.title }}
@@ -24,6 +30,9 @@
                                         {% assign link_child = link_child_item.handle %}
                                         <ul>
                                             {% for link_child_2 in linklists[link_child].links %}
+                                            {%- comment %}<locksmith:1fdb>{% endcomment -%}
+                                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link_child_2, subject_parent: linklists[link_child], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                                            {%- comment %}</locksmith:1fdb>{% endcomment -%}
                                             <li {% if link_child_2.current %} class="active"{% endif %}>
                                                 <a href="{{ link_child_2.url }}" data-value="{{ link_child_2.title | handle }}">
                                                     {{ link_child_2.title }}

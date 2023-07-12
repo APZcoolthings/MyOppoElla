@@ -30,55 +30,61 @@
                         <div class="halo-block">
                             {%- assign limit = settings.search_product_to_show -%}
                             <div class="products-grid column-{{ settings.search_product_per_row }} disable-srollbar">
+                                {%- comment %}<locksmith:344b>{% endcomment -%}
+                                  {%- assign locksmith_8c0b_forloop__size = 0 %}{%- for product in collections[settings.search_product_collection].products limit: limit -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections[settings.search_product_collection], variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_8c0b_forloop__size = locksmith_8c0b_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_8c0b_forloop__index = nil -%}
+                                {%- comment %}</locksmith:344b>{% endcomment -%}
                                 {%- for product in collections[settings.search_product_collection].products limit: limit -%}
+                                    {%- comment %}<locksmith:3188>{% endcomment -%}
+                                      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections[settings.search_product_collection], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_8c0b_forloop__index == nil %}{% assign locksmith_8c0b_forloop__index = 1 %}{% assign locksmith_8c0b_forloop__index0 = 0 %}{% else %}{% assign locksmith_8c0b_forloop__index = locksmith_8c0b_forloop__index | plus: 1 %}{% assign locksmith_8c0b_forloop__index0 = locksmith_8c0b_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_8c0b_forloop__index == 1 %}{% assign locksmith_8c0b_forloop__first = true %}{% else %}{% assign locksmith_8c0b_forloop__first = false %}{% endif %}{% if locksmith_8c0b_forloop__index == locksmith_8c0b_forloop__size %}{% assign locksmith_8c0b_forloop__last = true %}{% else %}{% assign locksmith_8c0b_forloop__last = false %}{% endif %}{% assign locksmith_8c0b_forloop__rindex = locksmith_8c0b_forloop__size | minus: locksmith_8c0b_forloop__index | minus: 1 %}{% assign locksmith_8c0b_forloop__rindex0 = locksmith_8c0b_forloop__size | minus: locksmith_8c0b_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+                                    {%- comment %}</locksmith:3188>{% endcomment -%}
                                     <div class="product">
                                         {% if settings.product_card_layout == '02' %}
                                             {% render 'product-card-02',
                                                 product_card_product: product,
                                                 portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
+                                                serial: locksmith_8c0b_forloop__index,
                                                 sectionId: 'list-result'
                                             %}
                                         {% elsif settings.product_card_layout == '03' %}
                                             {% render 'product-card-03',
                                                 product_card_product: product,
                                                 portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
+                                                serial: locksmith_8c0b_forloop__index,
                                                 sectionId: 'list-result'
                                             %}
                                         {% elsif settings.product_card_layout == '04' %}
                                             {% render 'product-card-04',
                                                 product_card_product: product,
                                                 portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
+                                                serial: locksmith_8c0b_forloop__index,
                                                 sectionId: 'list-result'
                                             %}
                                         {% elsif settings.product_card_layout == '05' %}
                                             {% render 'product-card-05',
                                                 product_card_product: product,
                                                 portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
+                                                serial: locksmith_8c0b_forloop__index,
                                                 sectionId: 'list-result'
                                             %}
                                         {% elsif settings.product_card_layout == '06' %}
                                             {% render 'product-card-06',
                                                 product_card_product: product,
                                                 portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
+                                                serial: locksmith_8c0b_forloop__index,
                                                 sectionId: 'list-result'
                                             %}
                                         {% elsif settings.product_card_layout == '07' %}
                                             {% render 'product-card-07',
                                                 product_card_product: product,
                                                 portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
+                                                serial: locksmith_8c0b_forloop__index,
                                                 sectionId: 'list-result'
                                             %}
                                         {% else %}
                                             {% render 'product-card',
                                                 product_card_product: product,
                                                 portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
+                                                serial: locksmith_8c0b_forloop__index,
                                                 sectionId: 'list-result'
                                             %}
                                         {% endif %}
