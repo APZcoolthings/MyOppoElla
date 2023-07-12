@@ -227,11 +227,17 @@
                     {%- else -%}
                         <div class="collection">
                             <ul class="productListing {% if layout == '1' %} productList{% else %} productGrid column-{{ layout }}{% endif %} list-{{ layout }} list-unstyled" id="main-collection-product-grid" data-id="{{ section.id }}">
+                                {%- comment %}<locksmith:7334>{% endcomment -%}
+                                  {%- assign locksmith_5d38_forloop__size = 0 %}{%- for product in collection.products -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_5d38_forloop__size = locksmith_5d38_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_5d38_forloop__index = nil -%}
+                                {%- comment %}</locksmith:7334>{% endcomment -%}
                                 {%- for product in collection.products -%}
+                                    {%- comment %}<locksmith:9606>{% endcomment -%}
+                                      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_5d38_forloop__index == nil %}{% assign locksmith_5d38_forloop__index = 1 %}{% assign locksmith_5d38_forloop__index0 = 0 %}{% else %}{% assign locksmith_5d38_forloop__index = locksmith_5d38_forloop__index | plus: 1 %}{% assign locksmith_5d38_forloop__index0 = locksmith_5d38_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_5d38_forloop__index == 1 %}{% assign locksmith_5d38_forloop__first = true %}{% else %}{% assign locksmith_5d38_forloop__first = false %}{% endif %}{% if locksmith_5d38_forloop__index == locksmith_5d38_forloop__size %}{% assign locksmith_5d38_forloop__last = true %}{% else %}{% assign locksmith_5d38_forloop__last = false %}{% endif %}{% assign locksmith_5d38_forloop__rindex = locksmith_5d38_forloop__size | minus: locksmith_5d38_forloop__index | minus: 1 %}{% assign locksmith_5d38_forloop__rindex0 = locksmith_5d38_forloop__size | minus: locksmith_5d38_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+                                    {%- comment %}</locksmith:9606>{% endcomment -%}
                                     <li class="product">
                                         {% render 'product-grid-layout',
                                             product_card_product: product,
-                                            serial: forloop.index,
+                                            serial: locksmith_5d38_forloop__index,
                                             sectionId: section.id,
                                             show_list: true,
                                             loading: true

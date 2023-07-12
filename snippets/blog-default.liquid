@@ -124,13 +124,19 @@
                         </div>
                     {%- endif -%} {% endcomment %}
                     <div class="blog-row blog-block-item column-1">
+                        {%- comment %}<locksmith:b13e>{% endcomment -%}
+                          {%- assign locksmith_6cd6_forloop__size = 0 %}{%- for article in blog.articles -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: article, subject_parent: blog, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_6cd6_forloop__size = locksmith_6cd6_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_6cd6_forloop__index = nil -%}
+                        {%- comment %}</locksmith:b13e>{% endcomment -%}
                         {%- for article in blog.articles -%}
-                            {% if forloop.first == true %}
+                            {%- comment %}<locksmith:fa6d>{% endcomment -%}
+                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: article, subject_parent: blog, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_6cd6_forloop__index == nil %}{% assign locksmith_6cd6_forloop__index = 1 %}{% assign locksmith_6cd6_forloop__index0 = 0 %}{% else %}{% assign locksmith_6cd6_forloop__index = locksmith_6cd6_forloop__index | plus: 1 %}{% assign locksmith_6cd6_forloop__index0 = locksmith_6cd6_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_6cd6_forloop__index == 1 %}{% assign locksmith_6cd6_forloop__first = true %}{% else %}{% assign locksmith_6cd6_forloop__first = false %}{% endif %}{% if locksmith_6cd6_forloop__index == locksmith_6cd6_forloop__size %}{% assign locksmith_6cd6_forloop__last = true %}{% else %}{% assign locksmith_6cd6_forloop__last = false %}{% endif %}{% assign locksmith_6cd6_forloop__rindex = locksmith_6cd6_forloop__size | minus: locksmith_6cd6_forloop__index | minus: 1 %}{% assign locksmith_6cd6_forloop__rindex0 = locksmith_6cd6_forloop__size | minus: locksmith_6cd6_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+                            {%- comment %}</locksmith:fa6d>{% endcomment -%}
+                            {% if locksmith_6cd6_forloop__first == true %}
                                 {%- assign first = true -%}
                             {% else %}
                                 {%- assign first = false -%}
                             {% endif %}
-                            <div class="item{% if forloop.first == true %} item--first{% endif %}" style="--color-summary-style: {{ text_color }}">
+                            <div class="item{% if locksmith_6cd6_forloop__first == true %} item--first{% endif %}" style="--color-summary-style: {{ text_color }}">
                                 {% render 'article-card-3',
                                     article: article,
                                     media_size: media_size,

@@ -209,6 +209,9 @@
                 <div class="page-content main-blog">
                     <div class="blog-row blog-block-item column-{{ item_per_row }}">
                         {%- for article in blog.articles -%}
+                            {%- comment %}<locksmith:fe8c>{% endcomment -%}
+                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: article, subject_parent: blog, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                            {%- comment %}</locksmith:fe8c>{% endcomment -%}
                             <div class="item">
                                 {% render 'article-card-2',
                                     article: article,

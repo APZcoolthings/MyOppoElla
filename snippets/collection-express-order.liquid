@@ -244,6 +244,9 @@
                                 
                                 <div class="productListing express-order-content t-body product-collection">
                                     {% for product in collection.products %}
+                                    {%- comment %}<locksmith:4563>{% endcomment -%}
+                                      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                                    {%- comment %}</locksmith:4563>{% endcomment -%}
                                     <div class="product grid-item">   
                                         {% render 'product-express-order-item', product: product %}
                                     </div>

@@ -210,6 +210,9 @@
                     <div class="blog-row blog-block-item column-{{ item_per_row }}">
                         <div class="blog-grid-sizer"></div>
                         {%- for article in blog.articles -%}
+                            {%- comment %}<locksmith:db95>{% endcomment -%}
+                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: article, subject_parent: blog, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                            {%- comment %}</locksmith:db95>{% endcomment -%}
                             <div class="item" data-masonry-item>
                                 {% render 'article-card-2',
                                     article: article,

@@ -24,6 +24,9 @@
                     <ul class="categories-slider--list disable-srollbar">
                         {% assign menu = linklists[section.settings.menu_category].links %}
                         {% for link in menu %}
+                            {%- comment %}<locksmith:f692>{% endcomment -%}
+                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                            {%- comment %}</locksmith:f692>{% endcomment -%}
                             <li>
                                 <a class="item-menu"  href="{{ link.url }}">
                                     {% assign img = link.handle | downcase | replace: ' ', '-' | append: '.png' | file_url %}

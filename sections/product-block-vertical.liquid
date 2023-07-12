@@ -42,6 +42,9 @@
                     {% endif %}
                     <div class="product__list-vertical">
                         {%- for product in collections[collection].products limit: limit -%}
+                            {%- comment %}<locksmith:e4eb>{% endcomment -%}
+                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections[collection], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                            {%- comment %}</locksmith:e4eb>{% endcomment -%}
                             <div class="product">
                                 {% render 'product-card-vertical',
                                     product_card_product: product
