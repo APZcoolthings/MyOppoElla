@@ -180,13 +180,19 @@
                             <div class="collection">
                             <div class="collection resultListing">
                                 <ul class="productListing{% if section.settings.collection_results_per_row == 1 %} productList{% else %} productGrid column-{{ layout }} {% endif %} list-{{ layout }} list-unstyled" id="main-collection-product-grid" data-id="{{ section.id }}">
+                                    {%- comment %}<locksmith:3fec>{% endcomment -%}
+                                      {%- assign locksmith_a375_forloop__size = 0 %}{%- for item in search.results -%}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_a375_forloop__size = locksmith_a375_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_a375_forloop__index = nil -%}
+                                    {%- comment %}</locksmith:3fec>{% endcomment -%}
                                     {%- for item in search.results -%}
+                                        {%- comment %}<locksmith:77bc>{% endcomment -%}
+                                          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_a375_forloop__index == nil %}{% assign locksmith_a375_forloop__index = 1 %}{% assign locksmith_a375_forloop__index0 = 0 %}{% else %}{% assign locksmith_a375_forloop__index = locksmith_a375_forloop__index | plus: 1 %}{% assign locksmith_a375_forloop__index0 = locksmith_a375_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_a375_forloop__index == 1 %}{% assign locksmith_a375_forloop__first = true %}{% else %}{% assign locksmith_a375_forloop__first = false %}{% endif %}{% if locksmith_a375_forloop__index == locksmith_a375_forloop__size %}{% assign locksmith_a375_forloop__last = true %}{% else %}{% assign locksmith_a375_forloop__last = false %}{% endif %}{% assign locksmith_a375_forloop__rindex = locksmith_a375_forloop__size | minus: locksmith_a375_forloop__index | minus: 1 %}{% assign locksmith_a375_forloop__rindex0 = locksmith_a375_forloop__size | minus: locksmith_a375_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+                                        {%- comment %}</locksmith:77bc>{% endcomment -%}
                                         {%- if item.object_type == 'product'-%}
                                             <li class="product">    
                                                 {% render 'product-grid-layout',
                                                     product_card_product: item,
                                                     show_add_to_cart: true,
-                                                    serial: forloop.index,
+                                                    serial: locksmith_a375_forloop__index,
                                                     sectionId: section.id,
                                                     show_list: true,
                                                     loading: true
@@ -216,6 +222,9 @@
                                                     <div class="halo-block-content">
                                                         <ul class="resultTable list-unstyled">
                                                             {%- for item in search.results %}
+                                                                {%- comment %}<locksmith:1dc6>{% endcomment -%}
+                                                                  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                                                                {%- comment %}</locksmith:1dc6>{% endcomment -%}
                                                                 <li class="item" data-listed-article-or-page>
                                                                     <div class="item-wrapper">
                                                                         <h6 class="title card-title">

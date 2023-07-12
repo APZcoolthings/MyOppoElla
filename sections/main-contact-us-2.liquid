@@ -96,6 +96,9 @@
             <div class="contact-navigation-container {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%} container-full{% else %}container{% endif %} scroll-snap-mobile">
                 <ul class="contact-page-nav disable-srollbar">
                     {% for link in linklists[section.settings.menu].links %}
+                        {%- comment %}<locksmith:1a8c>{% endcomment -%}
+                          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists[section.settings.menu], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                        {%- comment %}</locksmith:1a8c>{% endcomment -%}
                         <li class="item {% if link.active %}active{% endif %}">
                             <a href="{{ link.url }}">{{ link.title }}</a>
                         </li>

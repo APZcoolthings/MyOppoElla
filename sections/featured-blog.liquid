@@ -360,6 +360,9 @@
         <div class="halo-row column-{{ section.settings.blog_results_per_row }}{% if section.settings.post_limit == 2 %} disable_dots_tablet{% endif %}" data-rows="{{ section.settings.blog_results_per_row }}" data-blogs-slider style="--row-distance-style: {{ section.settings.item_distance | prepend: '-' | append: 'px' }};">
             {%- assign blog = blogs[section.settings.blog_posts] -%}
             {% for article in blog.articles limit: section.settings.post_limit %}
+            {%- comment %}<locksmith:ed0e>{% endcomment -%}
+              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: article, subject_parent: blog, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+            {%- comment %}</locksmith:ed0e>{% endcomment -%}
             <div class="halo-item" id="block-{{article.id}}" style="--item-distance-style: {{ section.settings.item_distance | append: 'px' }};" data-animate="{{ settings.banner_animation }}">
                 {% render 'article-card-featured', 
                     article: article,

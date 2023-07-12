@@ -108,8 +108,14 @@
             </div>
         </div>  
         <div class="content-block blogs-list">
+            {%- comment %}<locksmith:d84a>{% endcomment -%}
+              {%- assign locksmith_e0d9_forloop__size = 0 %}{% for article in blog.articles limit: post_limit %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: article, subject_parent: blog, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_e0d9_forloop__size = locksmith_e0d9_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_e0d9_forloop__index = nil -%}
+            {%- comment %}</locksmith:d84a>{% endcomment -%}
             {% for article in blog.articles limit: post_limit %}
-                {% if forloop.first == false %}
+                {%- comment %}<locksmith:d8fd>{% endcomment -%}
+                  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: article, subject_parent: blog, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_e0d9_forloop__index == nil %}{% assign locksmith_e0d9_forloop__index = 1 %}{% assign locksmith_e0d9_forloop__index0 = 0 %}{% else %}{% assign locksmith_e0d9_forloop__index = locksmith_e0d9_forloop__index | plus: 1 %}{% assign locksmith_e0d9_forloop__index0 = locksmith_e0d9_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_e0d9_forloop__index == 1 %}{% assign locksmith_e0d9_forloop__first = true %}{% else %}{% assign locksmith_e0d9_forloop__first = false %}{% endif %}{% if locksmith_e0d9_forloop__index == locksmith_e0d9_forloop__size %}{% assign locksmith_e0d9_forloop__last = true %}{% else %}{% assign locksmith_e0d9_forloop__last = false %}{% endif %}{% assign locksmith_e0d9_forloop__rindex = locksmith_e0d9_forloop__size | minus: locksmith_e0d9_forloop__index | minus: 1 %}{% assign locksmith_e0d9_forloop__rindex0 = locksmith_e0d9_forloop__size | minus: locksmith_e0d9_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+                {%- comment %}</locksmith:d8fd>{% endcomment -%}
+                {% if locksmith_e0d9_forloop__first == false %}
                   <div class="blog-post-item" id="block-{{article.id}}" data-list-item data-article-id="{{ article.id }}">
                       {% render 'article-card-list-item',
                           article: article,

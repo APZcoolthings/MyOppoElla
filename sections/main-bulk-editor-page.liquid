@@ -95,11 +95,14 @@
                             </div>
                             <ul class="list-unstyled custom-scrollbar">
                                 <li>
-                                    <a class="all-products" href="javascript:void(0)" data-title="{{ 'bulk_editor_page.general.all_collection' | t }}" data-href="&ids={% for product in category.products %}{{ product.id }}%2C{% endfor %}" data-bulk-list-item role="button">
+                                    <a class="all-products" href="javascript:void(0)" data-title="{{ 'bulk_editor_page.general.all_collection' | t }}" data-href="&ids={% for product in category.products %}{%- comment %}<locksmith:9996>{% endcomment -%}{%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: category, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:9996>{% endcomment -%}{{ product.id }}%2C{% endfor %}" data-bulk-list-item role="button">
                                         <span class="text">{{ 'bulk_editor_page.general.all_collection' | t }}</span>
                                     </a>
                                 </li>
                                 {%- for category in collections -%}
+                                    {%- comment %}<locksmith:adc0>{% endcomment -%}
+                                      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: category, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                                    {%- comment %}</locksmith:adc0>{% endcomment -%}
                                     <li>
                                         <a class="product" href="javascript:void(0)" data-title="{{ category.title }}" data-href="&collection_id={{ category.id }}" data-bulk-list-item role="button">
                                             <span class="text">{{ category.title | escape }}</span>

@@ -142,6 +142,9 @@
     function getAllBrands() {
         let brandGroup, brand;
         {%- for vendor in shop.vendors -%}
+            {%- comment %}<locksmith:e243>{% endcomment -%}
+              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: vendor, subject_parent: shop, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+            {%- comment %}</locksmith:e243>{% endcomment -%}
             {% assign letter = vendor | strip_html | downcase | truncate: 1, '' %}
 
             {%- if section.settings.type == 'vendor' -%}

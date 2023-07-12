@@ -79,6 +79,9 @@
                                         {%- assign assign collection = block.settings.collection.links -%} 
                                         
                                         {% for link in collection %}
+                                            {%- comment %}<locksmith:32b3>{% endcomment -%}
+                                              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                                            {%- comment %}</locksmith:32b3>{% endcomment -%}
                                             <li><a {% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %}><span>{{ link.title }}</span></a></li>
                                         {% endfor %}
                                     </ul>

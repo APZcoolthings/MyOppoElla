@@ -19,6 +19,9 @@
             {% endif %}
             <div class="block__custom--text">
                 {% for link in section.settings.menu.links %}
+                {%- comment %}<locksmith:9c36>{% endcomment -%}
+                  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: section.settings.menu, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                {%- comment %}</locksmith:9c36>{% endcomment -%}
                 <div class="wrapper-text">
                     <a title="{{ link.title }}"{% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %}>
                         {{ link.title }}
